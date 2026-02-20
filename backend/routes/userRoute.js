@@ -4,11 +4,22 @@ import { login , register, logout, getOtherUser, updatePhoto} from "../controlle
 import isAuthenticated from "../middleware/isAuthenticated.js";
 
 // configure multer storage for profile images
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => cb(null, "uploads/"),
+//   filename: (req, file, cb) => cb(null, Date.now() + "-" + file.originalname),
+// });
+// const upload = multer({ storage });
+
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, "uploads/"),
-  filename: (req, file, cb) => cb(null, Date.now() + "-" + file.originalname),
-});
-const upload = multer({ storage });
+  destination: function (req, file, cb) {
+    cb(null, "uploads/")           //folder where files will be saved, all commings files save in './public/temp' folder
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname)                      //Keep the same name as the user uploaded
+  }
+})
+export const upload = multer({ storage: storage })
+
 
 const router = express.Router();
 

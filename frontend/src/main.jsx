@@ -9,7 +9,7 @@ import axios from "axios";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 
-export const BACKEND_URL="http://localhost:8080"
+export const BACKEND_URL="https://chatify-awuy.onrender.com"
 
 const persistor = persistStore(store);
 

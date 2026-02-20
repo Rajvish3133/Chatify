@@ -1,6 +1,7 @@
 import { User } from "../models/userModel.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { uploadOnCloudinary } from "../config/cloudinary.js"
 
 export const register = async (req, res) => {
   try {
@@ -24,9 +25,15 @@ export const register = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     let profilePhotoUrl;
-    if (req.file) {
-      profilePhotoUrl = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
-    } else {
+
+ 
+        if(req.file){
+         profilePhotoUrl=await uploadOnCloudinary(req.file.path)
+    }
+    // if (req.file) {
+    //   profilePhotoUrl = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
+    // }
+     else {
       profilePhotoUrl = `https://api.dicebear.com/7.x/initials/png?seed=${fullName}`;
     }
 
