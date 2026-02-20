@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+body{
+  background: url("chat_image.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
