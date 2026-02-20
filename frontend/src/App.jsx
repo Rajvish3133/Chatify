@@ -20,7 +20,7 @@ function App() {
 
   useEffect(() => {
     if (authUser) {
-      socket = io("http://localhost:8080", {
+      socket = io("https://chatify-awuy.onrender.com", {
         withCredentials: true,
         query: {
           userId: authUser?._id,
