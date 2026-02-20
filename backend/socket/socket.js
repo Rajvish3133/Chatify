@@ -5,7 +5,7 @@ import app from "../app.js";
 const server = http.createServer(app);
 const io = new Server(server, {
     cors:{
-        origin: ['http://localhost:5173'],
+        origin: 'https://chatify-1-we4r.onrender.com',
         methods: ['GET','POST'],
         credentials: true 
     },
